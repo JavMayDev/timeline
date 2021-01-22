@@ -1,0 +1,51 @@
+$color: #623;
+
+#tl-wrapper {
+
+    #tl-scrollable {
+	display: flex;
+	flex-direction: row;
+	overflow-x: scroll;
+	width: 100%;
+	position: absolute;
+	height: 400px;
+
+	#tl-docs-line {
+	    .tl-day-wrapper {
+		position: absolute;
+		border: 1px solid black;
+		
+		h3 {
+		    text-align: center;
+		}
+
+		.tl-doc {
+		    margin: 10px;
+		    padding: 10px;
+		    background-color: #aaa;
+		}
+	    }
+	}
+    }
+
+    #tl-draggable-line {
+	overflow-x: scroll;
+	height: 100px;
+	width: 100%;
+	top: 500px;
+	position: absolute;
+
+	#tl-canvas {
+	    position: absolute;
+	}
+
+	#tl-draggable {
+	    position: absolute;
+	    cursor: move;
+	    height: 100%;
+	    width: 200px;
+	    background-color: transparent;
+	    border: 2px solid black
+	}
+    }
+}
