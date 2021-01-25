@@ -1,5 +1,5 @@
 import { docsLine } from './domElements'
-import { dayWidth, milisecInDay } from './constants'
+import { dayWidth } from './constants'
 
 export default (docs, date, dayDiff) => {
     // set the wrapper

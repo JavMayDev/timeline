@@ -29,7 +29,7 @@ $color: #623;
     }
 
     #tl-draggable-line {
-	overflow-x: scroll;
+	overflow-x: hidden;
 	height: 100px;
 	width: 100%;
 	top: 500px;
@@ -43,9 +43,13 @@ $color: #623;
 	    position: absolute;
 	    cursor: move;
 	    height: 100%;
-	    width: 200px;
+	    width: 50px;
 	    background-color: transparent;
 	    border: 2px solid black
+	}
+
+	span {
+	    position: absolute;
 	}
     }
 }
