@@ -2,6 +2,7 @@ const milisecInDay = 1000 * 60 * 60 * 24
 const dayWidth = 300
 const scale = 10
 const canvasHeight = 50
+const docsLineHeight = '80vh'
 
 const monthNames = [
     'Enero',
@@ -18,4 +19,11 @@ const monthNames = [
     'Diciembre',
 ]
 
-export { dayWidth, milisecInDay, scale, canvasHeight, monthNames }
+export {
+    dayWidth,
+    milisecInDay,
+    scale,
+    canvasHeight,
+    monthNames,
+    docsLineHeight,
+}

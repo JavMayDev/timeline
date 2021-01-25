@@ -8,21 +8,20 @@ $color: #623;
 	overflow-x: scroll;
 	width: 100%;
 	position: absolute;
-	height: 400px;
 
 	#tl-docs-line {
 	    .tl-day-wrapper {
 		position: absolute;
-		border: 1px solid black;
 		
 		h3 {
+		    position: absolute;
+		    width: 100%;
 		    text-align: center;
 		}
 
 		.tl-doc {
 		    margin: 10px;
 		    padding: 10px;
-		    background-color: #aaa;
 		}
 	    }
 	}
@@ -32,8 +31,9 @@ $color: #623;
 	overflow-x: hidden;
 	height: 100px;
 	width: 100%;
-	top: 500px;
 	position: absolute;
+	background-color: #eee;
+	padding-top: 20px;
 
 	#tl-canvas {
 	    position: absolute;
@@ -42,10 +42,11 @@ $color: #623;
 	#tl-draggable {
 	    position: absolute;
 	    cursor: move;
-	    height: 100%;
+	    height: 50px;
 	    width: 50px;
 	    background-color: transparent;
-	    border: 2px solid black
+	    border: 2px solid #666;
+	    border-radius: 8px;
 	}
 
 	span {

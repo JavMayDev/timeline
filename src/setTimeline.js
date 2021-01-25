@@ -64,6 +64,6 @@ function printMonthName(monthIndex, x) {
         )
     )
     monthSpan.style.left = x + 'px'
-    monthSpan.style.top = canvasHeight + 'px'
+    monthSpan.style.top = canvasHeight + 20 + 'px'
     draggableLine.appendChild(monthSpan)
 }

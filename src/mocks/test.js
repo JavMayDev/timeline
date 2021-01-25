@@ -8,4 +8,5 @@ export default [
     { date: '2021-02-18', content: 'sit', type: 2 },
     { date: '2021-02-20', content: 'amet', type: 0 },
     { date: '2021-02-18', content: 'consectetuer', type: 1 },
+    { date: '2021-02-08', content: 'partyyyyy', type: 0 },
 ]
