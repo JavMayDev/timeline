@@ -1,56 +1,93 @@
-$color: #623;
-
 #tl-wrapper {
-
     #tl-scrollable {
-	display: flex;
-	flex-direction: row;
-	overflow-x: scroll;
-	width: 100%;
-	position: absolute;
+        display: flex;
+        flex-direction: column;
+        overflow-x: scroll;
+        width: 100%;
+        position: absolute;
 
-	#tl-docs-line {
-	    .tl-day-wrapper {
+        .tl-type-line {
+            flex-grow: 1;
+	    z-index: 0;
+
+	    transition: 0.5s;
+
+            .tl-type-day {
 		position: absolute;
-		
-		h3 {
-		    position: absolute;
-		    width: 100%;
-		    text-align: center;
-		}
+		overflow-y: scroll;
 
-		.tl-doc {
+		.tl-doc-wrapper {
+		background-color: rgba(0, 0, 0, 0.5);
+		    color: white;
 		    margin: 10px;
 		    padding: 10px;
+		    height: auto !important;
 		}
-	    }
-	}
+            }
+        }
+
+        #tl-dates-line {
+            height: 50px;
+            background-color: #555;
+            h3 {
+		margin: 0px;
+                position: absolute;
+		text-align: center;
+		color: white;
+            }
+        }
+
+        #tl-docs-line {
+            .tl-day-wrapper {
+                height: 100%;
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+
+                .tl-type-wrapper {
+                    flex-grow: 1;
+                }
+
+                h3 {
+                    position: absolute;
+                    width: 100%;
+                    height: 50px;
+                    text-align: center;
+                }
+
+                .tl-doc {
+                    position: absolute;
+                    margin: 10px;
+                    padding: 10px;
+                }
+            }
+        }
     }
 
     #tl-draggable-line {
-	overflow-x: hidden;
-	height: 100px;
-	width: 100%;
-	position: absolute;
-	background-color: #eee;
-	padding-top: 20px;
+        overflow-x: hidden;
+        height: 100px;
+        width: 100%;
+        position: absolute;
+        background-color: #eee;
+        padding-top: 20px;
 
-	#tl-canvas {
-	    position: absolute;
-	}
+        #tl-canvas {
+            position: absolute;
+        }
 
-	#tl-draggable {
-	    position: absolute;
-	    cursor: move;
-	    height: 50px;
-	    width: 50px;
-	    background-color: transparent;
-	    border: 2px solid #666;
-	    border-radius: 8px;
-	}
+        #tl-draggable {
+            position: absolute;
+            cursor: move;
+            height: 50px;
+            width: 50px;
+            background-color: transparent;
+            border: 2px solid #666;
+            border-radius: 8px;
+        }
 
-	span {
-	    position: absolute;
-	}
+        span {
+            position: absolute;
+        }
     }
 }

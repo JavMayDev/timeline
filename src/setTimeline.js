@@ -1,5 +1,5 @@
 import { minDate, maxDate, docsRange } from './getDocs'
-import setDayWrapper from './setDayWrapper'
+import insertDocs from './insertDocs'
 import getDocsByDate from './getDocsByDate'
 import { canvas, draggableLine } from './domElements'
 import { monthNames, scale, dayWidth, canvasHeight } from './constants'
@@ -17,7 +17,6 @@ for (
     dateIndex.getTime() <= maxDate.getTime();
     dateIndex.setDate(dateIndex.getDate() + 1)
 ) {
-
     // get how left-spaced put each thing in the scaled line
     const x = (i * dayWidth) / scale + 10
 
@@ -28,9 +27,9 @@ for (
 
     const dateDocs = getDocsByDate(dateIndex)
     if (dateDocs.length > 0) {
-	// insert docs on the docs line
-        setDayWrapper(dateDocs, dateIndex, i)
-	// insert doc previews according to type in the scaled line
+        insertDocs(dateDocs, dateIndex, i)
+
+        // insert doc previews according to type in the scaled line
         docTypes.forEach((type, typeIndex) => {
             if (dateDocs.find(doc => doc.type == type.id))
                 drawDocType(x, type, typeIndex)
@@ -48,9 +47,14 @@ function drawDate(x) {
 }
 
 function drawDocType(x, type, typeIndex) {
-    console.log('on drawDocType')
     ctx.beginPath()
-    ctx.arc(x, (canvasHeight / docTypes.length) * typeIndex + 10, 5, 0, Math.PI * 2)
+    ctx.arc(
+        x,
+        (canvasHeight / docTypes.length) * typeIndex + 10,
+        5,
+        0,
+        Math.PI * 2
+    )
     ctx.fillStyle = type.color
     ctx.fill()
     ctx.stroke()
