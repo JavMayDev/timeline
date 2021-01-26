@@ -14,20 +14,31 @@ docTypes.forEach(type => {
     typeLine.id = 'tl-type-line' + type.name
     typeLine.style.backgroundColor = type.color
 
-    typeLine.onmouseover = event => setGrowHeights(event.target, true)
-    typeLine.onmouseleave = event => setGrowHeights(event.target, false)
+    typeLine.onmouseover = _ => growLine(typeLine, true)
+    typeLine.onmouseleave = _ => growLine(typeLine, false)
+
+    const typeTag = document.createElement('div')
+    typeTag.classList.add('tl-type-tag')
+    typeTag.appendChild(document.createTextNode(type.name))
+
+    typeLine.appendChild(typeTag)
 
     scrollable.appendChild(typeLine)
 })
 
-function setGrowHeights(target, growing) {
-    target.style.flexGrow = growing ? 2 : 1
+function growLine(typeLine, growing) {
+    typeLine.style.flexGrow = growing ? 2 : 1
 
     const height =
-        (scrollable.offsetHeight / (docTypes.length + 1)) * (growing ? 2 : 1) +
+        ((scrollable.offsetHeight - datesLine.offsetHeight) /
+            (docTypes.length + 1)) *
+            (growing ? 2 : 1) +
         'px'
-    Array.from(target.childNodes).forEach(typeDay => {
-        typeDay.style.height = height
+    Array.from(typeLine.childNodes).forEach(child => {
+        if (child.classList.contains('tl-type-day')) {
+            child.style.height = height
+            child.style.pointerEvents = growing ? 'all' : 'none'
+        }
     })
 }
 

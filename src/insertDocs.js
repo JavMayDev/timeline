@@ -13,7 +13,7 @@ export default (docs, date, dayIndex) => {
             typeDay.classList.add('tl-type-day')
             typeDay.style.transform = 'translateX(' + x + ')'
             typeDay.style.width = dayWidth + 'px'
-	    typeDay.style.height = typeLine.offsetHeight + 'px'
+            typeDay.style.height = typeLine.offsetHeight + 'px'
 
             typeDocs.forEach(doc => typeDay.appendChild(setDocWrapper(doc)))
 
@@ -35,6 +35,26 @@ export default (docs, date, dayIndex) => {
 function setDocWrapper(doc) {
     const docWrapper = document.createElement('div')
     docWrapper.classList.add('tl-doc-wrapper')
-    docWrapper.appendChild(document.createTextNode(doc.content))
+
+    if (doc.image_url) {
+        const docImg = document.createElement('img')
+        docImg.src = doc.image_url
+        docWrapper.appendChild(docImg)
+    }
+
+    const docInfo = document.createElement('div')
+    docInfo.classList.add('tl-doc-info')
+    docInfo.appendChild(document.createTextNode(doc.content))
+    docWrapper.appendChild(docInfo)
+
+    if (doc.source) {
+        const docLink = document.createElement('a')
+        docLink.href = doc.source
+	const btn = document.createElement('button')
+	btn.appendChild(document.createTextNode('Fuente'))
+	docLink.appendChild(btn)
+	docInfo.appendChild(docLink)
+    }
+
     return docWrapper
 }
