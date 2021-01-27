@@ -1,4 +1,4 @@
-import { docs } from './getDocs'
+// import { docs } from './getDocs'
 
 export default date =>
     docs.filter(doc => {

@@ -1,4 +1,5 @@
-import docTypes from './mocks/docTypes'
+import setDocWrapper from './setDocWrapper'
+// import docTypes from './mocks/docTypes'
 import { dayWidth, monthNames } from './constants'
 
 export default (docs, date, dayIndex) => {
@@ -7,7 +8,7 @@ export default (docs, date, dayIndex) => {
         if (typeDocs.length > 0) {
             const x = dayWidth * dayIndex + 'px'
 
-            const typeLine = document.getElementById('tl-type-line' + type.name)
+            const typeLine = document.getElementById('tl-type-line' + type.type_name)
 
             const typeDay = document.createElement('div')
             typeDay.classList.add('tl-type-day')
@@ -30,31 +31,4 @@ export default (docs, date, dayIndex) => {
             document.getElementById('tl-dates-line').appendChild(dateFoot)
         }
     })
-}
-
-function setDocWrapper(doc) {
-    const docWrapper = document.createElement('div')
-    docWrapper.classList.add('tl-doc-wrapper')
-
-    if (doc.image_url) {
-        const docImg = document.createElement('img')
-        docImg.src = doc.image_url
-        docWrapper.appendChild(docImg)
-    }
-
-    const docInfo = document.createElement('div')
-    docInfo.classList.add('tl-doc-info')
-    docInfo.appendChild(document.createTextNode(doc.content))
-    docWrapper.appendChild(docInfo)
-
-    if (doc.source) {
-        const docLink = document.createElement('a')
-        docLink.href = doc.source
-	const btn = document.createElement('button')
-	btn.appendChild(document.createTextNode('Fuente'))
-	docLink.appendChild(btn)
-	docInfo.appendChild(docLink)
-    }
-
-    return docWrapper
 }

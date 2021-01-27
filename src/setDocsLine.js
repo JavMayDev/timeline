@@ -1,17 +1,16 @@
 import { scrollable, draggableLine } from './domElements'
 import { docsLineHeight, dayWidth } from './constants'
 import { docsRange } from './getDocs'
-import docTypes from './mocks/docTypes'
+// import docTypes from './mocks/docTypes'
 
-const docsLineWidth = (docsRange + 1) * dayWidth
+const docsLineWidth = (docsRange + 2) * dayWidth
 scrollable.style.height = docsLineHeight
-draggableLine.style.top = docsLineHeight
 
 docTypes.forEach(type => {
     const typeLine = document.createElement('div')
     typeLine.style.width = docsLineWidth + 'px'
     typeLine.classList.add('tl-type-line')
-    typeLine.id = 'tl-type-line' + type.name
+    typeLine.id = 'tl-type-line' + type.type_name
     typeLine.style.backgroundColor = type.color
 
     typeLine.onmouseover = _ => growLine(typeLine, true)
@@ -19,7 +18,7 @@ docTypes.forEach(type => {
 
     const typeTag = document.createElement('div')
     typeTag.classList.add('tl-type-tag')
-    typeTag.appendChild(document.createTextNode(type.name))
+    typeTag.appendChild(document.createTextNode(type.type_name))
 
     typeLine.appendChild(typeTag)
 
@@ -46,3 +45,27 @@ const datesLine = document.createElement('div')
 datesLine.style.width = docsLineWidth + 'px'
 datesLine.id = 'tl-dates-line'
 scrollable.appendChild(datesLine)
+
+function getOffsetTop(elem) {
+    var offsetTop = 0
+    do {
+        if (!isNaN(elem.offsetTop)) {
+            offsetTop += elem.offsetTop
+        }
+    } while ((elem = elem.offsetParent))
+    return offsetTop
+}
+draggableLine.style.top =
+    getOffsetTop(datesLine) + datesLine.offsetHeight + 'px'
+
+// this is to give the illusion the typeTags
+// are scrilling with the body, (actually they aren't,
+// cause are fixed-positioned)
+document.body.onscroll = _ =>
+    Array.from(document.getElementsByClassName('tl-type-tag')).forEach(
+        typeTag =>
+            (typeTag.style.transform =
+                'translateY(-' + document.body.scrollTop + 'px)')
+    )
+
+export { docsLineWidth }

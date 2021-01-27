@@ -1,4 +1,16 @@
+
+#site-header {
+    height: 70px !important;
+}
+
+
 #tl-wrapper {
+    
+    all: initial;
+    span {
+	word-break: initial;
+    }
+
     #tl-scrollable {
         display: flex;
         flex-direction: column;
@@ -59,6 +71,7 @@
             height: 50px;
             background-color: #555;
             h3 {
+		font-size: 20px;
                 margin: 0px;
                 position: absolute;
                 text-align: center;

@@ -3,15 +3,14 @@ import insertDocs from './insertDocs'
 import getDocsByDate from './getDocsByDate'
 import { canvas, draggableLine } from './domElements'
 import { monthNames, scale, dayWidth, canvasHeight } from './constants'
-import docTypes from './mocks/docTypes'
+// import docTypes from './mocks/docTypes'
 
 // set canvas
-canvas.width = (docsRange * dayWidth) / scale + 20
+canvas.width = ((docsRange + 1) * dayWidth) / scale + 20
 canvas.height = canvasHeight
 const ctx = canvas.getContext('2d')
 
 let i = 0 // yeah, i know
-console.log('maxDate:', maxDate)
 for (
     let dateIndex = new Date(minDate);
     dateIndex.getTime() <= maxDate.getTime();
@@ -55,7 +54,7 @@ function drawDocType(x, type, typeIndex) {
         0,
         Math.PI * 2
     )
-    ctx.fillStyle = type.color
+    ctx.fillStyle = '#' + type.color
     ctx.fill()
     ctx.stroke()
 }
@@ -67,7 +66,7 @@ function printMonthName(monthIndex, x) {
             monthNames[monthIndex].substring(0, 3).toUpperCase()
         )
     )
-    monthSpan.style.left = x + 'px'
-    monthSpan.style.top = canvasHeight + 20 + 'px'
     draggableLine.appendChild(monthSpan)
+    monthSpan.style.left = x - monthSpan.offsetWidth / 2 + 'px'
+    monthSpan.style.top = canvasHeight + 20 + 'px'
 }

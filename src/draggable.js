@@ -1,19 +1,21 @@
 import { scrollable, draggable, draggableLine, canvas } from './domElements'
 import { scale } from './constants'
-var dragging = false
+import { docsLineWidth } from './setDocsLine'
 
+var dragging = false
 
 // is dragging
 document.getElementById('tl-draggable').onmousedown = dragStart
 document.getElementById('tl-draggable').ontouchstart = dragStart
-function dragStart () {
+function dragStart() {
     document.body.style = 'user-select: none'
     dragging = true
 }
 
 // stop dragging
 document.onmouseup = dragStop
-function dragStop () {
+document.ontouchcancel = dragStop
+function dragStop() {
     document.body.style = 'user-select: auto'
     dragging = false
 }
@@ -29,26 +31,24 @@ function drag(clientX) {
         draggable.style.left = left + 'px'
         scrollable.scroll({ left: left * scale })
 
-	scrollDraggableLine()
+        scrollDraggableLine()
     }
 }
 
 // this is to checkout all the line at dragging
-// (actually hard to explain)
 function scrollDraggableLine() {
-    const overflowed = canvas.offsetWidth - draggableLine.offsetWidth 
-	+ draggable.offsetWidth 
+    // how much the of the draggable line is overflowed
+    const overflowed = canvas.offsetWidth - draggableLine.offsetWidth
+
     draggableLine.scrollLeft =
-        ((parseInt(draggable.style.left.split('p')) -
-            draggableLine.scrollLeft) /
-            draggableLine.offsetWidth) *
-        overflowed
+        // how entirely is scrolled the docsLine times the overflowed draggable line part
+        (scrollable.scrollLeft / docsLineWidth) * overflowed
 }
 
 // move draggable when docsLine scrolling
-scrollable.onscroll = event => {
+scrollable.onscroll = _ => {
     if (!dragging) {
-        draggable.style.left = event.target.scrollLeft / scale + 'px'
-	scrollDraggableLine()
+        draggable.style.left = scrollable.scrollLeft / scale + 'px'
+        scrollDraggableLine()
     }
 }

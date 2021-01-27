@@ -5,7 +5,9 @@ export default [
         content:
             'some contentsome contentsome contentsome contentsome contentsome contentsome contentsome contentsome contentsome contentsome contentsome content',
         type: 1,
-	source: 'fjeiosfjiwso'
+	source: 'fjeiosfjiwso',
+	country: 'Mexico'
+
     },
     {
         date: '2021-01-12',
@@ -13,7 +15,8 @@ export default [
             'another thing on this day and typeanother thing on this day and typeanother thing on this day and typeanother thing on this day and typeanother thing on this day and type',
         type: 1,
 	image_url: 'https://picsum.photos/200/300' ,
-	source: 'fjeiosfjiwso'
+	source: 'fjeiosfjiwso',
+	country: 'Venezuela'
     },
     {
         date: '2021-01-12',
@@ -21,7 +24,8 @@ export default [
             'and more stuffand more stuffand more stuffand more stuffand more stuffand more stuffand more stuffand more stuffand more stuffand more stuffand more stuffand more stuffand more stuff',
         type: 1,
 	image_url: 'https://picsum.photos/200/300' ,
-	source: 'fjeiosfjiwso'
+	source: 'fjeiosfjiwso',
+	country: 'Mexico'
     },
     {
         date: '2021-01-12',
