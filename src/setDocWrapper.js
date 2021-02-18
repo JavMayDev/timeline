@@ -1,3 +1,5 @@
+import toggleModal from './toggleModal'
+
 export default doc => {
     const docWrapper = document.createElement('div')
     docWrapper.classList.add('tl-doc-wrapper')
@@ -6,6 +8,7 @@ export default doc => {
     if (doc.image_url) {
         const docImg = document.createElement('img')
         docImg.src = doc.image_url
+	docImg.onclick = () => toggleModal(doc.image_url)
         docWrapper.appendChild(docImg)
     }
 
@@ -25,6 +28,7 @@ export default doc => {
     // source
     if (doc.source) {
         const docLink = document.createElement('a')
+	docLink.target = '_blank'
         docLink.href = doc.source
 	const btn = document.createElement('button')
 	btn.appendChild(document.createTextNode('Fuente'))

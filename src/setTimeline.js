@@ -54,7 +54,7 @@ function drawDocType(x, type, typeIndex) {
         0,
         Math.PI * 2
     )
-    ctx.fillStyle = '#' + type.color
+    ctx.fillStyle = type.color
     ctx.fill()
     ctx.stroke()
 }
